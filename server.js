@@ -8,51 +8,70 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require('express-session');
-const isSignedIn = require('./middleware/user-signed-in.js');
+const MongoStore = require("connect-mongo");
+const userSignedIn = require('./middleware/user-signed-in.js');
 const userToView = require('./middleware/user-to-view.js');
 
+const profileController = require('./controllers/profile.js');
 const authController = require("./controllers/auth.js");
-
 //** DEPENDENCIES **//
 
-// Set the port from environment variable
+//** port **//
 const port = process.env.PORT ? process.env.PORT : "3005";
+//** port **//
 
+//** database connection **//
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on("connected", () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+    console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
+//** database connection **//
+
 //** MIDDLEWARE **//
-// Middleware to parse URL-encoded data from forms
+    // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
+    // Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride("_method"));
-// Morgan for logging HTTP requests
+    // Morgan for logging HTTP requests
 app.use(morgan('dev'));
-//integrate session management 
+    //integrate session management 
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+      }),
     })
   );
-// userToView middleware
+    // userToView middleware
 app.use(userToView); 
 //** MIDDLEWARE **//
+
 //** ROUTES **//
-app.get("/", (req, res) => {
-    res.render("index.ejs", {
-      user: req.session.user,
-    });
+app.get('/', (req, res) => {
+    // Check if the user is signed in
+    if (req.session.user) {
+      // Redirect signed-in users to their profile/ songs index
+      res.redirect(`/users/${req.session.user._id}/profile`);
+    } else {
+      // Show the homepage for users who are not signed in
+      res.render('index.ejs');
+    }
   });
   
 //** ROUTES **//
 
-app.use("/auth", authController);
-// userSignedIn middleware 
-app.use(userSignedIn); 
+//** more middleware **//
+    // auth middleware
+app.use('/auth', authController);
+    // userSignedIn middleware 
+app.use(userSignedIn);
+    //profile middleware
+app.use('/users/:userId/profile', profileController); 
+//** more middleware **//
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}!`);

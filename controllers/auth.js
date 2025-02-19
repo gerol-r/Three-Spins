@@ -70,9 +70,11 @@ router.post("/sign-in", async (req, res) => {
       username: userInDb.username,
       _id: userInDb._id
   };
-  
-  res.redirect("/");
+  // save session
+  req.session.save(() =>{
+    res.redirect("/");
   });
+});
 /* post routes */
 
 //** AUTH ROUTES **// 
