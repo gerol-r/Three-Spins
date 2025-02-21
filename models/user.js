@@ -15,6 +15,11 @@ const songSchema = new mongoose.Schema({
     comment: {
         type: String,
     },
+    rank: {
+      type: Number,
+      required: true,
+      min: 1, max: 3,
+    },
     mp3Url: {
         type: String,
     },

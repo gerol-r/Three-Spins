@@ -1,5 +1,3 @@
-<!-- views/applications/index.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,5 +8,17 @@
   <body>
     <%- include('../partials/_mainnav.ejs') %>
     <h1>Here Are Your Top 3 Songs</h1>
+    <a href="/users/<%= user._id %>/profile/new">Add Songs</a>
+    <ul>
+      <% if (songs && songs.length > 0) { %>
+        <% songs.forEach((song) => { %>
+          
+          <li><a href="/users/<%= user._id %>/profile/<%= song._id %>"><%= song.title %> - <%= song.rankText %></a>
+          </li>
+        <% }) %>
+      <% } else { %>
+        <li>No songs added yet.</li>
+      <% } %>
+    </ul>
   </body>
 </html>

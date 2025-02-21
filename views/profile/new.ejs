@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Song</title>
+    <style>
+      /* Style for disabled options */
+      select option:disabled {
+        color: grey; /* Grey out the text */
+        background-color: #f0f0f0; /* Light grey background */
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../partials/_mainnav.ejs') %>
+    <h1>Add a New Song</h1>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+    <% if (allRanksTaken) { %>
+        <p style="color: red;">You have already added your Three Spins. Delete a song to add a new one.</p>
+      <% } else { %>
+        <form id="songForm" action="/users/<%= user._id %>/profile/add-song" method="POST">
+        </form>
+      <% } %>
+    <form id="songForm" action="/users/<%= user._id %>/profile/add-song" method="POST">
+      <label for="song title">Song Title:</label>
+      <input type="text" name="title" id="title" required />
+
+      <label for="artist">Artist:</label>
+      <input type="text" name="artist" id="artist" required />
+
+      <label for="comment">Why do you love this Song?</label>
+      <textarea name="comment" id="comment"></textarea>
+
+      <label for="rank">Where does it rank in your top three spins?</label>
+      <select id="rank" name="rank" required>
+        <option value="1" <%= takenRanks.includes(1) ? 'disabled' : '' %>>Number 1 All Time!</option>
+        <option value="2" <%= takenRanks.includes(2) ? 'disabled' : '' %>>My Second Fav!</option>
+        <option value="3" <%= takenRanks.includes(3) ? 'disabled' : '' %>>Third But Not Least!</option>
+      </select>
+      <button type="submit">Add Song</button>
+    </form>
+  </body>
+</html>

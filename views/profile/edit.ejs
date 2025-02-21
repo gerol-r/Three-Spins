@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Song</title>
+  </head>
+  <body>
+    <%- include('../partials/_mainnav.ejs') %>
+    <h1>Edit Your "<em><%= song.rankText.slice(0, -1) %>" Favorite Song</em></h1>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form id="songForm" action="/users/<%= user._id %>/profile/<%= song._id %>?_method=PUT" method="POST">
+        <label for="song title">Song Title:</label>
+        <input type="text" name="title" id="title" value="<%= song.title %>" required />
+      
+        <label for="artist">Artist:</label>
+        <input type="text" name="artist" id="artist" value="<%= song.artist %>" required />
+      
+        <label for="comment">Why do you love this Song?</label>
+        <textarea name="comment" id="comment"><%= song.comment %></textarea>
+
+        <button type="submit">Update</button>
+      </form>
+  </body>
+</html>
