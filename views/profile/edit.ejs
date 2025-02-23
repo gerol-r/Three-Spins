@@ -7,6 +7,12 @@
   </head>
   <body>
     <%- include('../partials/_mainnav.ejs') %>
+    <div>
+        <h4>
+            <%= user.username %>
+        </h4>
+        <img src="<%= user.avatar %>" alt="User Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
+    </div>
     <h1>Edit Your "<em><%= song.rankText.slice(0, -1) %>" Favorite Song</em></h1>
     <% if (typeof error !== 'undefined' && error) { %>
       <p style="color: red;"><%= error %></p>

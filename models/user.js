@@ -26,14 +26,9 @@ const songSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    required: false,
-  },
-  lastname: {
-    type: String,
-    required: false,
-  },
+  avatar: { 
+    type: String, 
+    required: true }, 
   username: {
     type: String,
     required: true,

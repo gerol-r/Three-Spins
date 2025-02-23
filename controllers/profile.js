@@ -146,6 +146,7 @@ router.get('/:songId', async (req, res) => {
       const song = currentUser.songs.id(req.params.songId);
       // Render the show view, passing the song data in the context object
       res.render('profile/show.ejs', {
+        user: currentUser,
         song: song,
       });
     } catch (error) {

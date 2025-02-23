@@ -8,6 +8,11 @@
   <body>
     <%- include('../partials/_mainnav.ejs') %> 
     <h1>Sign in</h1>
+    <% if (messages && messages.length > 0) { %>
+      <div style="color: red;">
+        <%= messages[0] %>
+      </div>
+    <% } %>
     <form action="/auth/sign-in" method="POST">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" />

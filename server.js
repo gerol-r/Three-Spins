@@ -3,14 +3,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const app = express();
-
+const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require('express-session');
+const flash = require("express-flash");
 const MongoStore = require("connect-mongo");
 const userSignedIn = require('./middleware/user-signed-in.js');
 const userToView = require('./middleware/user-to-view.js');
+
 
 const profileController = require('./controllers/profile.js');
 const authController = require("./controllers/auth.js");
@@ -29,6 +31,10 @@ mongoose.connection.on("connected", () => {
 //** database connection **//
 
 //** MIDDLEWARE **//
+
+    // Serve static files from the "public" directory
+app.use(express.static("public"));
+app.use("/utilities", express.static(path.join("utilities")));
     // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
     // Middleware for using HTTP verbs such as PUT or DELETE
@@ -46,6 +52,8 @@ app.use(
       }),
     })
   );
+    // Serve flash messages
+app.use(flash());  
     // userToView middleware
 app.use(userToView); 
 //** MIDDLEWARE **//

@@ -7,6 +7,12 @@
   </head>
   <body>
     <%- include('../partials/_mainnav.ejs') %>
+<div>
+    <h4>
+        <%= user.username %>
+    </h4>
+    <img src="<%= user.avatar %>" alt="User Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
+</div>
     <h1><%= song.title %> by <%= song.artist %></h1>
     <% if (song.comment) { %>
     <p>Why: <%= song.comment %></p>

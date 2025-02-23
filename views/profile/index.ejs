@@ -7,6 +7,8 @@
   </head>
   <body>
     <%- include('../partials/_mainnav.ejs') %>
+    <h2>Hi, <%= user.username %>!</h2>
+    <img src="<%= user.avatar %>" alt="User Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
     <h1>Here Are Your Top 3 Songs</h1>
     <a href="/users/<%= user._id %>/profile/new">Add Songs</a>
     <ul>
