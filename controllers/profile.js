@@ -144,6 +144,7 @@ router.get('/:songId', async (req, res) => {
     try {
       const currentUser = await User.findById(req.session.user._id);
       const song = currentUser.songs.id(req.params.songId);
+      song.rankText = getRankText(song.rank);
       // Render the show view, passing the song data in the context object
       res.render('profile/show.ejs', {
         user: currentUser,

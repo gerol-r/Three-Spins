@@ -1,5 +1,34 @@
 body {
-    background: conic-gradient(from 90deg, #5f62ff, #7b9efe, #5f5fff);
+    background: radial-gradient(circle at center, #A7B3D9, #292d57);
+    
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.358); /* Semi-transparent black overlay */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: -1; /* Place behind other content */
+  }
+  @keyframes gradientShift {
+    0% {
+      background: radial-gradient(circle at center, #4957A6, #292d57); 
+    }
+    25% {
+        background: radial-gradient(circle at center, #5665C0, #292d57);
+    } 
+    50% {
+      background: radial-gradient(circle at center, #6273D9, #292d57); 
+    }
+    100% {
+        background: radial-gradient(circle at center, #5665C0, #292d57);
+    } 
+  }
+  body {
+    animation: gradientShift 15s infinite cubic-bezier(0.42, 0, 0.58, 1);
   }
   /* Background Image Container */
   #background-container {
@@ -21,46 +50,96 @@ body {
   
   /* Main Container */
   .main-container {
-    width: 60%; 
+    width: 70%; 
     height: 80vh;
     margin: 0 auto; 
-    background-color: #A7B3D9; 
+    background: transparent;
     padding: 20px;
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  }  
-  h1 {
-      text-align: center;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .main-container:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
+  }
+  .main-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70%; /* Adjust height to cover the top section (h1, p, logo, nav) */
+    background: rgba(167, 179, 217, 0.3); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    z-index: -1; /* Place behind the content */
+    border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+  }
+  .main-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(167, 179, 217, 1), rgba(73, 87, 166, 1));
+    z-index: 0; /* Place below the main container */
   }
 /* Navigation Row */
 .nav-row {
-    background-color: #1d1f3c; 
-    padding: 5px 0; 
+
+    padding: 5px 0;
     margin-bottom: 20px;
-  }
-  
-  /* Navigation Links */
-  .nav-row a {
-    color: white; 
-    text-decoration: none;
-    margin: 0 10px; 
-    font-size: 1.1rem; 
-  }
-  
-  .nav-row a:hover {
-    color: #85eeee;
-  }
-  
-  /* Center Navigation Links */
-  .nav-row .container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.nav-col {
+    background-color: #1d1f3c80;
+    backdrop-filter: blur(10px);
+    padding: 5px 20px;
+    border-radius: 20px; 
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
+
+/* Navigation Links */
+.nav-col a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.1rem;
+}
+
+.nav-col a:hover {
+    color: #85eeee;
+}
+  
+  /* Center Navigation Links */
+
 #logo {
     max-width: 200px;
     width: 200px;
     margin-top: 0;
+}
+/* Font and text */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #dae2fe;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+p{
+    font-weight: 500;
 }
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -71,4 +150,19 @@ body {
     .nav-row a {
       font-size: 1rem; 
     }
+    .nav-row {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+      }
+    
+      .nav-col {
+        width: 100%; /* Full width on smaller screens */
+        min-width: auto; /* Reset minimum width */
+        margin: 10px 0; /* Add spacing around the nav column */
+        border-radius: 10px; /* Keep the same border radius */
+      }
+    
+      #logo {
+        margin-bottom: 10px; /* Add spacing below the logo */
+      }
   }

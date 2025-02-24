@@ -1,0 +1,316 @@
+/* Background for the Page */
+h1, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+h5, p, a { 
+    font-family: 'Inter', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #353A6F;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4957A6, #292d57);
+    background-size: cover;
+}
+
+/* Navigation Row */
+.nav-row {
+    padding: 5px 0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.nav-col {
+    background-color: #1d1f3c80;
+    backdrop-filter: blur(10px);
+    padding: 5px 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Links */
+.nav-col a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.1rem;
+}
+
+.nav-col a:hover {
+    color: #85eeee;
+}
+
+#logo {
+    max-width: 200px;
+    width: 200px;
+    margin-top: 0;
+}
+
+/* Profile Page Styles */
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.profile-header h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.profile-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #85eeee;
+    box-shadow: 0 0 10px rgba(133, 238, 238, 0.5);
+}
+
+.profile-header a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #85eeee;
+    color: #292d57;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.profile-header a:hover {
+    background-color: #6fc9c9;
+}
+
+/* Song Container */
+.song-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Song Card */
+.song-card {
+    background-color: rgba(29, 31, 60, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.song-card h4 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.song-card h5 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.song-card a {
+    color: #85eeee;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.song-card a:hover {
+    color: #85eeee;
+    font-size: 1.2rem;
+}
+
+/* Empty Song Card */
+.empty-song-card {
+    background-color: rgba(29, 31, 60, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+/* Show Page Styles */
+.show-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(29, 31, 60, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.show-container h1 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.show-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #85eeee;
+    box-shadow: 0 0 10px rgba(133, 238, 238, 0.5);
+}
+
+.show-container p {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.show-container a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #85eeee;
+    color: #292d57;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.show-container a:hover {
+    background-color: #6fc9c9;
+}
+
+.show-container button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.show-container button:hover {
+    background-color: #e65a5a;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-col {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    #logo {
+        margin-bottom: 10px;
+    }
+    /* Profile Page */
+    .profile-header h1 {
+      font-size: 2rem;
+    }
+  
+    .profile-header h2 {
+      font-size: 1.5rem;
+    }
+  
+    .song-container {
+      grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+      gap: 15px;
+      padding: 10px;
+    }
+  
+    .song-card,
+    .empty-song-card {
+      padding: 15px;
+    }
+  
+    .song-card h4 {
+      font-size: 1.1rem;
+    }
+  
+    .song-card h5 {
+      font-size: 1rem;
+    }
+  
+    /* Show Page */
+    .show-container {
+      padding: 15px;
+    }
+  
+    .show-container h1 {
+      font-size: 1.8rem;
+    }
+  
+    .show-container p {
+      font-size: 1rem;
+    }
+  
+    .show-container a,
+    .show-container button {
+      display: block; /* Stack buttons and links vertically */
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Profile Page */
+    .profile-header h1 {
+      font-size: 1.8rem;
+    }
+  
+    .profile-header h2 {
+      font-size: 1.3rem;
+    }
+  
+    .profile-header img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .profile-header a {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  
+    /* Show Page */
+    .show-container h1 {
+      font-size: 1.5rem;
+    }
+  
+    .show-container p {
+      font-size: 0.9rem;
+    }
+  
+    .show-container a,
+    .show-container button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
