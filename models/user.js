@@ -9,7 +9,7 @@ const songSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  album: {
+  album: { //for future enhancement
     type: String,
   },
   comment: {
@@ -20,7 +20,7 @@ const songSchema = new mongoose.Schema({
     required: true,
     min: 1, max: 3,
   },
-  mp3Url: {
+  mp3Url: { //for future enhancement
     type: String,
   },
 });
