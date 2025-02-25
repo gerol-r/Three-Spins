@@ -206,7 +206,7 @@ A secure log-in process that protects my account.
  
 ## 5. ERD
 
-  ![alt text](image.png)
+  ![erd imge](image.png)
 
 ## 6. Create a Github Repo
 
