@@ -1,10 +1,15 @@
 /* Background for the Page */
-h1, h4 {
+h1,
+h4 {
     font-family: 'Montserrat', sans-serif;
 }
-h5, p, a { 
+
+h5,
+p,
+a {
     font-family: 'Inter', sans-serif;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -230,87 +235,91 @@ body {
     #logo {
         margin-bottom: 10px;
     }
+
     /* Profile Page */
     .profile-header h1 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
+
     .profile-header h2 {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  
+
     .song-container {
-      grid-template-columns: 1fr; /* Stack cards vertically on small screens */
-      gap: 15px;
-      padding: 10px;
+        grid-template-columns: 1fr;
+        /* Stack cards vertically on small screens */
+        gap: 15px;
+        padding: 10px;
     }
-  
+
     .song-card,
     .empty-song-card {
-      padding: 15px;
+        padding: 15px;
     }
-  
+
     .song-card h4 {
-      font-size: 1.1rem;
+        font-size: 1.1rem;
     }
-  
+
     .song-card h5 {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     /* Show Page */
     .show-container {
-      padding: 15px;
+        padding: 15px;
     }
-  
+
     .show-container h1 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .show-container p {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     .show-container a,
     .show-container button {
-      display: block; /* Stack buttons and links vertically */
-      width: 100%;
-      margin: 10px 0;
+        display: block;
+        /* Stack buttons and links vertically */
+        width: 100%;
+        margin: 10px 0;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
+
     /* Profile Page */
     .profile-header h1 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .profile-header h2 {
-      font-size: 1.3rem;
+        font-size: 1.3rem;
     }
-  
+
     .profile-header img {
-      width: 80px;
-      height: 80px;
+        width: 80px;
+        height: 80px;
     }
-  
+
     .profile-header a {
-      font-size: 0.9rem;
-      padding: 8px 16px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
-  
+
     /* Show Page */
     .show-container h1 {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  
+
     .show-container p {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  
+
     .show-container a,
     .show-container button {
-      font-size: 0.9rem;
-      padding: 8px 16px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
-  }
+}

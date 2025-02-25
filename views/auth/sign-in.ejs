@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/auth-forms.css" rel="stylesheet">
-    <link
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/auth-forms.css" rel="stylesheet">
+  <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  </head>
+</head>
+
 <body>
   <div class="nav-row">
     <div class="col-3">
@@ -17,7 +19,7 @@
     </div>
     <div class="col"></div> <!-- Empty column for spacing -->
     <div class="col-4 nav-col">
-      <%- include('../partials/_mainnav.ejs') %> 
+      <%- include('../partials/_mainnav.ejs') %>
     </div>
     <div class="col-4"></div> <!-- Empty column for spacing -->
   </div>
@@ -25,25 +27,26 @@
   <div class="form-container">
     <h2 class="form-title">Sign In</h2>
 
-    <% if (messages && messages.length > 0) { %>
+    <% if (messages && messages.length> 0) { %>
       <div class="error-message">
         <%= messages[0] %>
       </div>
-    <% } %>
+      <% } %>
 
-    <form action="/auth/sign-in" method="POST">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" class="form-input" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" class="form-input" required>
-      </div>
-      <button type="submit" class="form-button">Sign In</button>
-    </form>
+        <form action="/auth/sign-in" method="POST">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="form-input" required>
+          </div>
+          <button type="submit" class="form-button">Sign In</button>
+        </form>
 
-    <p class="form-link">Don't have an account? <a href="/auth/sign-up">Sign Up</a></p>
+        <p class="form-link">Don't have an account? <a href="/auth/sign-up">Sign Up</a></p>
   </div>
 </body>
+
 </html>

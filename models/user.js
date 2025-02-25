@@ -1,34 +1,35 @@
 const mongoose = require("mongoose");
 
 const songSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    artist: {
-        type: String,
-        required: true,
-    },
-    album: {
-        type: String,
-    },
-    comment: {
-        type: String,
-    },
-    rank: {
-      type: Number,
-      required: true,
-      min: 1, max: 3,
-    },
-    mp3Url: {
-        type: String,
-    },
+  title: {
+    type: String,
+    required: true,
+  },
+  artist: {
+    type: String,
+    required: true,
+  },
+  album: {
+    type: String,
+  },
+  comment: {
+    type: String,
+  },
+  rank: {
+    type: Number,
+    required: true,
+    min: 1, max: 3,
+  },
+  mp3Url: {
+    type: String,
+  },
 });
 
 const userSchema = new mongoose.Schema({
-  avatar: { 
-    type: String, 
-    required: true }, 
+  avatar: {
+    type: String,
+    required: true
+  },
   username: {
     type: String,
     required: true,
@@ -42,9 +43,10 @@ const userSchema = new mongoose.Schema({
     validate: [arrayLimit, '{PATH} exceeds the limit of 3']
   }
 });
+
 function arrayLimit(val) {
-    return val.length <= 3;
-  }
+  return val.length <= 3;
+}
 
 
 

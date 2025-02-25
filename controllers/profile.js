@@ -26,12 +26,11 @@ router.get('/', async (req, res) => {
             songs: songsWithRankText, // Pass the songs array with rankText
         });
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
 
-  
+
 // INDEX
 // NEW
 router.get('/new', async (req, res) => {
@@ -48,7 +47,6 @@ router.get('/new', async (req, res) => {
             allRanksTaken: allRanksTaken,
         });
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
@@ -56,17 +54,16 @@ router.get('/new', async (req, res) => {
 // DELETE
 router.delete('/:songId', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
-      // Using Mongoose .deleteOne() method to delete song using id from req.params
-      currentUser.songs.id(req.params.songId).deleteOne();
-      // Save changes to the user
-      await currentUser.save();
-      res.redirect(`/users/${currentUser._id}/profile`);
+        const currentUser = await User.findById(req.session.user._id);
+        // Using Mongoose .deleteOne() method to delete song using id from req.params
+        currentUser.songs.id(req.params.songId).deleteOne();
+        // Save changes to the user
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/profile`);
     } catch (error) {
-      console.log(error);
-      res.redirect('/');
+        res.redirect('/');
     }
-  });
+});
 // DELETE
 // UPDATE
 router.put('/:songId', async (req, res) => {
@@ -81,7 +78,6 @@ router.put('/:songId', async (req, res) => {
             `/users/${currentUser._id}/profile/${req.params.songId}`
         );
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
@@ -95,12 +91,11 @@ router.post('/', async (req, res) => {
         await currentUser.save();
         res.redirect(`/users/${currentUser._id}/profile`);
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
 
-    // CREATE route for adding a new song
+// CREATE route for adding a new song
 router.post('/add-song', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
@@ -116,7 +111,6 @@ router.post('/add-song', async (req, res) => {
         await currentUser.save();
         res.redirect(`/users/${currentUser._id}/profile`);
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
@@ -133,28 +127,26 @@ router.get('/:songId/edit', async (req, res) => {
             song: song,
         });
     } catch (error) {
-        console.log(error);
         res.redirect('/');
     }
 });
-  
+
 // EDIT
 // SHOW
 router.get('/:songId', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
-      const song = currentUser.songs.id(req.params.songId);
-      song.rankText = getRankText(song.rank);
-      // Render the show view, passing the song data in the context object
-      res.render('profile/show.ejs', {
-        user: currentUser,
-        song: song,
-      });
+        const currentUser = await User.findById(req.session.user._id);
+        const song = currentUser.songs.id(req.params.songId);
+        song.rankText = getRankText(song.rank);
+        // Render the show view, passing the song data in the context object
+        res.render('profile/show.ejs', {
+            user: currentUser,
+            song: song,
+        });
     } catch (error) {
-      console.log(error);
-      res.redirect('/');
+        res.redirect('/');
     }
-  });
+});
 // SHOW
 //** ROUTES **//
 

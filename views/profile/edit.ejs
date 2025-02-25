@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Song</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/user-forms.css" rel="stylesheet">
-    <link
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Song</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/user-forms.css" rel="stylesheet">
+  <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  </head>
-  <body>
-    <div class="nav-row">
-      <div class="col-3">
-        <img id="logo" src="/design_collateral/Three-Spins-Logo.png" alt="Three Spins Logo">
-      </div>
-      <div class="col"></div> <!-- Empty column for spacing -->
-      <div class="col-4 nav-col">
-        <%- include('../partials/_mainnav.ejs') %> 
-      </div>
-      <div class="col-4"></div> <!-- Empty column for spacing -->
+</head>
+
+<body>
+  <div class="nav-row">
+    <div class="col-3">
+      <img id="logo" src="/design_collateral/Three-Spins-Logo.png" alt="Three Spins Logo">
     </div>
-  
-    <div class="user-profile">
-      <h4><%= user.username %></h4>
-      <img src="<%= user.avatar %>" alt="User Avatar">
+    <div class="col"></div> <!-- Empty column for spacing -->
+    <div class="col-4 nav-col">
+      <%- include('../partials/_mainnav.ejs') %>
     </div>
-  
-    <div class="form-container">
-      <h1 class="form-title">Edit Your <em><%= song.rankText.slice(0, -1) %> Favorite Song</em></h1>
-  
-      <% if (typeof error !== 'undefined' && error) { %>
-        <p class="error-message"><%= error %></p>
+    <div class="col-4"></div> <!-- Empty column for spacing -->
+  </div>
+
+  <div class="user-profile">
+    <h4>
+      <%= user.username %>
+    </h4>
+    <img src="<%= user.avatar %>" alt="User Avatar">
+  </div>
+
+  <div class="form-container">
+    <h1 class="form-title">Edit Your <em>
+        <%= song.rankText.slice(0, -1) %> Favorite Song
+      </em></h1>
+
+    <% if (typeof error !=='undefined' && error) { %>
+      <p class="error-message">
+        <%= error %>
+      </p>
       <% } %>
-  
-      <form id="songForm" action="/users/<%= user._id %>/profile/<%= song._id %>?_method=PUT" method="POST">
-        <label for="title">Song Title:</label>
-        <input type="text" name="title" id="title" value="<%= song.title %>" required />
-  
-        <label for="artist">Artist:</label>
-        <input type="text" name="artist" id="artist" value="<%= song.artist %>" required />
-  
-        <label for="comment">Why do you love this Song?</label>
-        <textarea name="comment" id="comment"><%= song.comment %></textarea>
-  
-        <button class="form-button" type="submit">Update</button>
-      </form>
-    </div>
-  </body>
+
+        <form id="songForm" action="/users/<%= user._id %>/profile/<%= song._id %>?_method=PUT" method="POST">
+          <label for="title">Song Title:</label>
+          <input type="text" name="title" id="title" value="<%= song.title %>" required />
+
+          <label for="artist">Artist:</label>
+          <input type="text" name="artist" id="artist" value="<%= song.artist %>" required />
+
+          <label for="comment">Why do you love this Song?</label>
+          <textarea name="comment" id="comment"><%= song.comment %></textarea>
+
+          <button class="form-button" type="submit">Update</button>
+        </form>
+  </div>
+</body>
+
 </html>
