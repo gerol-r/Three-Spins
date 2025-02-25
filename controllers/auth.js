@@ -12,7 +12,8 @@ const User = require("../models/user.js");
 /* get routes */
 // route to sign-up page
 router.get("/sign-up", (req, res) => {
-  res.render("auth/sign-up.ejs");
+  const messages = req.flash("error");
+  res.render("auth/sign-up.ejs", { messages });
 });
 // route to sign-in page
 router.get("/sign-in", (req, res) => {
@@ -29,26 +30,42 @@ router.get("/sign-out", (req, res) => {
 /* post routes */
 // route to post sign-up credentials
 router.post("/sign-up", async (req, res) => {
-  // checking for username uniqueness
-  const userInDb = await User.findOne({ username: req.body.username });
-  if (userInDb) {
-    return res.send("Sorry, that username is already taken.");
+  try {
+    // checking for username uniqueness
+    const userInDb = await User.findOne({ username: req.body.username });
+    if (userInDb) {
+      req.flash("error", "Username taken. Please try again.");
+      return res.redirect("/auth/sign-up");
+    }
+
+    // pwd confirmation check
+    if (req.body.password !== req.body.confirmPwd) {
+      req.flash("error", "Password and Confirm Password must match");
+      return res.redirect("/auth/sign-up");
+    }
+
+    // encrypt pwd
+    const hashedPwd = bcrypt.hashSync(req.body.password, 10);
+    req.body.password = hashedPwd;
+
+    // Assign a random avatar
+    req.body.avatar = getRandomAvatar();
+
+    const user = await User.create(req.body);
+    // res.send(`Thanks for signing up ${user.username}`);
+
+    req.session.user = {
+      username: user.username,
+    };
+
+    req.session.save(() => {
+      res.redirect(`/users/${currentUser._id}/profile`);
+    });
+  } catch (error) {
+    console.error("Error during sign-up:", error);
+    req.flash("error", "An error occurred. Please try again."); // Set flash message
+    res.redirect("/auth/sign-up"); // Redirect to sign-in page
   }
-
-  // pwd confirmation check
-  if (req.body.password !== req.body.confirmPwd) {
-    return res.send("Password and Confirm Password must match");
-  }
-
-  // encrypt pwd
-  const hashedPwd = bcrypt.hashSync(req.body.password, 10);
-  req.body.password = hashedPwd;
-
-  // Assign a random avatar
-  req.body.avatar = getRandomAvatar();
-
-  const user = await User.create(req.body);
-  res.send(`Thanks for signing up ${user.username}`);
 });
 
 // route to sign user in
