@@ -135,11 +135,13 @@ body {
   font-size: 1.2rem;
   color: white;
   margin-bottom: 10px;
+  text-shadow: 3px 3px 4px #292d57;
 }
 
 .card p {
   font-size: 0.9rem;
   color: white;
+  text-shadow: 3px 3px 4px #292d57;
 }
 
 .card img {
