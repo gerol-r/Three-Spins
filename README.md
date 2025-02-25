@@ -73,3 +73,4 @@ I build applications and mini projects tied to my various interests. I enjoy des
 * MDN Docs
 * W3Schools
 * Geeks for Geeks
+* Medium
