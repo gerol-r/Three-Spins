@@ -2,6 +2,7 @@
 h1,
 h4 {
     font-family: 'Montserrat', sans-serif;
+    color: white;
 }
 
 h5,
@@ -121,7 +122,6 @@ body {
 
 .song-card h4 {
     font-size: 1.2rem;
-    color: white;
     margin-bottom: 10px;
 }
 
