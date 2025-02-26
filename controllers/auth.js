@@ -52,14 +52,14 @@ router.post("/sign-up", async (req, res) => {
     req.body.avatar = getRandomAvatar();
 
     const user = await User.create(req.body);
-    // res.send(`Thanks for signing up ${user.username}`);
 
     req.session.user = {
+      _id: user._id, 
       username: user.username,
     };
 
     req.session.save(() => {
-      res.redirect(`/users/${currentUser._id}/profile`);
+      res.redirect(`/users/${user._id}/profile`);
     });
   } catch (error) {
     console.error("Error during sign-up:", error);
