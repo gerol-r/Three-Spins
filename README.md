@@ -58,7 +58,7 @@ Users can sign up, log in, add or edit songs, and see their favorite tracks with
 * Users can change avatar.
 
 ## <a name="deployment"></a>Deployed Link
-* [Three Spins](https://three-spins-production-app-e98c6cafd0e7.herokuapp.com/)
+* [Three Spins](https://three-spins-production-app2-e98c6cafd0e7.herokuapp.com/)
 
 * You can view the repository:
 [Github.com](https://github.com/gerol-r/Three-Spins)
@@ -73,4 +73,4 @@ I build applications and mini projects tied to my various interests. I enjoy des
 * MDN Docs
 * W3Schools
 * Geeks for Geeks
-* Medium
+* Medium.
